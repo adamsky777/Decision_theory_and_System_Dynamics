@@ -1,0 +1,344 @@
+{UTF-8}
+accumulated deficit or profit  = A FUNCTION OF( expenses,Sales revenue)
+	~	
+	~		|
+
+expenses  = A FUNCTION OF( Depreciation rate,Interest costs,Operational expenses,repayment rate\
+		)
+	~	
+	~		|
+
+modules in test  = A FUNCTION OF( approval rate,development rate)
+	~	
+	~		|
+
+liabilities  = A FUNCTION OF( approval rate,disapproval rate,repayment rate)
+	~	
+	~		|
+
+Unknown moduals  = A FUNCTION OF( discovery rate)
+	~	
+	~		|
+
+modules in development  = A FUNCTION OF( disapproval rate,discovery rate)
+	~	
+	~		|
+
+discovery rate  = A FUNCTION OF( average discovery time,discovery percentage,modules in development\
+		,Unknown moduals)
+	~	
+	~		|
+
+repayment rate  = A FUNCTION OF( accumulated deficit or profit,average repayment time\
+		,liabilities)
+	~	
+	~		|
+
+average repayment time  = A FUNCTION OF( )
+	~	
+	~		|
+
+airport opening time  = A FUNCTION OF( percentage finished,percentage that needs to be finished before opening\
+		)
+	~	
+	~		|
+
+approval percentage  = A FUNCTION OF( )
+	~	
+	~		|
+
+approval rate  = A FUNCTION OF( approval percentage,average test time,modules in test\
+		)
+	~	
+	~		|
+
+average development time  = A FUNCTION OF( )
+	~	
+	~		|
+
+average discovery time  = A FUNCTION OF( )
+	~	
+	~		|
+
+average test time  = A FUNCTION OF( )
+	~	
+	~		|
+
+depreciation percentage  = A FUNCTION OF( )
+	~	
+	~		|
+
+Depreciation rate  = A FUNCTION OF( depreciation percentage,tangible asset)
+	~	
+	~		|
+
+development rate  = A FUNCTION OF( average development time,modules in development)
+	~	
+	~		|
+
+disapproval rate  = A FUNCTION OF( approval percentage,average test time,modules in test\
+		)
+	~	
+	~		|
+
+discovery percentage  = A FUNCTION OF( )
+	~	
+	~		|
+
+FBB passengers per year  = A FUNCTION OF( ) ~~|
+FBB passengers per year = WITH LOOKUP (
+	Time,
+		([(2006,0)-(2050,5e+07)],(2006,1.84e+07),(2007,2e+07),(2008,2.14e+07),(2009,2.09e+07\
+		),(2010,2.23e+07),(2011,2.4e+07),(
+2012,2.52e+07),(2013,2.63e+07),(2014,2.8e+07),(2015,2.95e+07),(2016,3.29e+07),(2017,3.33e+07\
+		),(2018,3.47e+07),(2019,3.56e+07
+),(2020,9e+06),(2021,9.9e+06),(2022,2.14e+07),(2023,2.68e+07),(2024,3.03e+07),(2025,3.39e+07\
+		),(2026,3.56e+07),(2027,3.6312e+07
+),(2028,3.70382e+07),(2029,3.7779e+07),(2030,3.85346e+07),(2031,3.93053e+07),(2032,4.00914e+07\
+		),(2033,4.08932e+07),(2034
+,4.17111e+07),(2035,4.25453e+07),(2036,4.33962e+07),(2037,4.42641e+07),(2038,4.51494e+07\
+		),(2039,4.60524e+07),(2040,4.69734e+07
+),(2100,4.697e+07) ))
+	~	passengers/years
+	~		~	:SUPPLEMENTARY 
+	|
+
+Interest costs  = A FUNCTION OF( interest percentage,liabilities)
+	~	
+	~		|
+
+interest percentage  = A FUNCTION OF( )
+	~	
+	~		|
+
+modules completed  = A FUNCTION OF( approval rate)
+	~	
+	~		|
+
+Operational expenses  = A FUNCTION OF( FBB passengers per year,operational expenses per passenger\
+		)
+	~	
+	~		|
+
+operational expenses per passenger  = A FUNCTION OF( airport opening time)
+	~	
+	~		|
+
+percentage finished  = A FUNCTION OF( modules completed,total number of modules of the new airport\
+		)
+	~	
+	~		|
+
+percentage that needs to be finished before opening  = A FUNCTION OF( )
+	~	
+	~		|
+
+Sales revenue  = A FUNCTION OF( FBB passengers per year,sales revenues per passenger)
+	~	
+	~		|
+
+sales revenues per passenger  = A FUNCTION OF( airport opening time,percentage finished\
+		)
+	~	
+	~		|
+
+tangible asset  = A FUNCTION OF( approval rate)
+	~	
+	~		|
+
+total number of modules of the new airport  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 2050
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 2006
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.0625
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,71,0
+10,1,FBB passengers per year,1749,802,64,23,8,3,0,2,0,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+10,2,modules in development,1125,333,34,14,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,modules in test,880,487,39,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,modules completed,1204,712,49,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,discovery rate,1367,508,36,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,6,average discovery time,1628,507,58,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,7,discovery percentage,1633,447,53,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,development rate,1023,480,44,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,9,average development time,1145,585,47,14,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,10,approval rate,917,713,34,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,11,disapproval rate,784,379,41,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,approval percentage,700,812,51,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,average test time,779,714,43,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,14,total number of modules of the new airport,1309,588,50,21,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,15,percentage finished,1418,713,49,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,16,percentage that needs to be finished before opening,1431,876,68,14,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,17,airport opening time,1608,713,51,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,6,5,0,0,45,0,3,128,0,0-0-255,|||0-0-0,1|(0,0)|
+1,19,7,5,0,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,20,5,2,1,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(1184,476)|
+1,21,2,8,1,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(1075,445)|
+1,22,9,8,0,0,45,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,23,8,3,1,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(952,501)|
+1,24,3,10,1,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(825,607)|
+1,25,3,11,1,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(820,457)|
+1,26,10,4,0,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,27,13,10,1,0,45,0,2,128,0,-1--1--1,|||0-0-0,1|(849,716)|
+1,28,13,11,0,0,45,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,29,4,15,0,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,30,14,15,0,0,45,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,31,15,17,0,0,45,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,32,16,17,0,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,33,12,10,0,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+1,34,12,11,0,0,45,0,2,128,0,-1--1--1,|||0-0-0,1|(0,0)|
+10,35,sales revenues per passenger,1806,715,47,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,36,15,35,1,0,43,0,0,0,0,-1--1--1,,1|(1545,614)|
+10,37,Sales revenue,2000,714,43,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,38,35,37,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,39,1,37,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+10,40,accumulated deficit or profit,2228,716,57,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||128-0-128,0,0,0,0,0,0
+1,41,37,40,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,42,17,35,0,0,0,0,1,192,0,251-2-7,|||0-0-0,1|(0,0)|
+10,43,expenses,2227,878,43,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,44,43,40,0,0,45,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+10,45,Operational expenses,2013,878,55,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+10,46,operational expenses per passenger,1610,880,63,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,47,1,45,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,48,46,45,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,49,17,46,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+10,50,Depreciation rate,1876,963,45,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+10,51,tangible asset,1285,962,43,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+10,52,depreciation percentage,1673,1016,61,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,53,10,51,1,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(1044,905)|
+1,54,51,50,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,55,52,50,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,56,45,43,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,57,50,43,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+10,58,Interest costs,1891,1055,43,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,59,58,43,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+10,60,liabilities,1351,1224,43,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,61,11,60,1,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(639,785)|
+1,62,10,60,1,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(1089,1113)|
+1,63,60,58,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+10,64,interest percentage,1670,1056,49,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,65,64,58,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+10,66,repayment rate,1990,1222,43,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+10,67,average repayment time,1677,1162,61,23,8,3,0,2,-1,0,0,0,-1--1--1,-1--1--1,|||251-2-7,0,0,0,0,0,0
+1,68,60,66,0,0,43,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,69,67,66,0,0,45,0,3,128,0,251-2-7,|||0-0-0,1|(0,0)|
+1,70,2,5,1,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(1462,313)|
+10,71,Unknown moduals,1232,377,48,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,72,71,5,1,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(1339,323)|
+1,73,5,71,1,32,45,0,1,128,0,0-0-255,|||0-0-0,1|(1259,480)|
+12,74,0,1329,396,23,23,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+B
+1,75,11,2,1,0,43,0,2,128,0,-1--1--1,|||0-0-0,1|(891,224)|
+12,76,0,946,332,23,23,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R
+1,77,10,3,1,0,45,0,2,128,0,-1--1--1,|||0-0-0,1|(980,591)|
+12,78,0,898,581,21,21,5,7,0,0,-1,0,0,0,0,0,0,0,0,0
+B
+1,79,40,66,1,0,43,0,1,128,0,251-2-7,|||0-0-0,1|(2296,980)|
+1,80,66,60,1,0,45,0,1,128,0,251-2-7,|||0-0-0,1|(1484,1374)|
+12,81,0,1288,236,20,20,4,7,0,0,-1,0,0,0,-1,-1,0,0,0,0
+R
+1,82,66,43,0,0,43,0,1,0,0,251-2-7,|||0-0-0,1|(0,0)|
+12,83,0,1660,1286,35,35,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+B
+12,84,0,2212,1001,35,35,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+B
+12,85,0,1328,445,80,40,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Unknown Module Discovery Process
+12,86,0,1289,279,80,40,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Learning by Doing Process
+12,87,0,944,403,80,40,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Rebuilding Process
+12,88,0,903,630,77,23,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Testing Process
+12,89,0,1660,1340,80,40,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Liability Process
+12,90,0,2216,1054,178,22,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Repayment Process
+12,91,0,2003,1071,38,38,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 2
+$192-192-192,0,Arial Unicode MS|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+///---\\\
+:GRAPH EBITDA
+:TITLE EBITDA
+:X-MIN 2006
+:X-MAX 2019
+:SCALE
+:VAR EBITDA
+:L<%^E!@
+4:Time
+5:liabilities
+9:base case
+19:71,0
+24:2006
+25:2021
+26:2021
+22:euro,euros
+22:module,modules
+22:passenger,passengers
+22:traveler,travellers
+22:year,years
+11:opt assets.voc
+12:opt assets.vpd
+23:0
+15:0,0,0,0,0,0
+27:2,
+34:0,
+42:1
+72:0
+73:0
+35:Date
+36:YYYY-MM-DD
+37:2006
+38:1
+39:1
+40:0
+41:0
+95:0
+96:0
+97:1
+77:0
+78:0
+102:0
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Courier|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1
