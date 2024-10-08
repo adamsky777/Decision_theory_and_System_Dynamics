@@ -1,0 +1,179 @@
+{UTF-8}
+Fear Input=
+	50
+	~	
+	~	This variable will be controlled by the user during the simulation
+	|
+
+Love Input=
+	50
+	~	
+	~	This variable will be controlled by the user during the simulation
+	|
+
+Fear= INTEG (
+	Fear Growth Rate - Fear Reduction Rate,
+		Fear Input)
+	~	
+	~		|
+
+Love= INTEG (
+	Love Growth Rate - Love Reduction Rate,
+		Love Input)
+	~	
+	~		|
+
+Happiness= INTEG (
+	Happiness Increase Rate - Happiness Decrease Rate,
+		50)
+	~	
+	~		|
+
+Fear Growth Rate=
+	MAX(0, Normal Fear Growth * Effect of Happiness on Fear Growth)
+	~	
+	~		|
+
+Love Growth Rate=
+	MAX(0, Normal Love Growth * Effect of Happiness on Love Growth)
+	~	
+	~		|
+
+Happiness Increase Rate=
+	MAX(0, (Effect of Love on Happiness * Love - Effect of Fear on Happiness * Fear) \
+		/ Time to Change Happiness)
+	~	
+	~		|
+
+Happiness Decrease Rate=
+	MAX(0, (Effect of Fear on Happiness * Fear - Effect of Love on Happiness * Love) \
+		/ Time to Change Happiness)
+	~	
+	~		|
+
+Fear Reduction Rate=
+	Fear * Normal Fear Reduction Rate * Effect of Love on Fear Reduction
+	~	
+	~		|
+
+Love Reduction Rate=
+	Love * Normal Love Reduction Rate * Effect of Fear on Love Reduction
+	~	
+	~		|
+
+Normal Fear Growth=
+	0.1
+	~	
+	~		|
+
+Normal Love Growth=
+	0.1
+	~	
+	~		|
+
+Normal Fear Reduction Rate=
+	0.05
+	~	
+	~		|
+
+Normal Love Reduction Rate=
+	0.05
+	~	
+	~		|
+
+Time to Change Happiness=
+	1
+	~	
+	~		|
+
+Effect of Happiness on Fear Growth=
+	WITH LOOKUP (Happiness,
+		([(0,0)-(100,2)],(0,2),(50,1),(100,0) ))
+	~	
+	~		|
+
+Effect of Happiness on Love Growth=
+	WITH LOOKUP (Happiness,
+		([(0,0)-(100,2)],(0,0),(50,1),(100,2) ))
+	~	
+	~		|
+
+Effect of Fear on Happiness=
+	WITH LOOKUP (Fear,
+		([(0,0)-(100,1)],(0,0),(50,0.5),(100,1) ))
+	~	
+	~		|
+
+Effect of Love on Happiness=
+	WITH LOOKUP (Love,
+		([(0,0)-(100,1)],(0,0),(50,0.5),(100,1) ))
+	~	
+	~		|
+
+Effect of Love on Fear Reduction=
+	WITH LOOKUP (Love,
+		([(0,0)-(100,2)],(0,0),(50,1),(100,2) ))
+	~	
+	~		|
+
+Effect of Fear on Love Reduction=
+	WITH LOOKUP (Fear,
+		([(0,0)-(100,2)],(0,0),(50,1),(100,2) ))
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.25
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,Fear,349,235,40,20,3,3,0,0,0,0,0,0
+10,2,Love,664,235,40,20,3,3,0,0,0,0,0,0
+10,3,Happiness,507,426,40,20,3,3,0,0,0,0,0,0
+12,4,48,168,234,10,8,0,3,0,0,-1,0,0,0
+1,5,7,1,4,0,0,22,0,0,0,-1--1--1,,1|(275,234)|
+1,6,7,4,100,0,0,22,0,0,0,-1--1--1,,1|(206,234)|
+11,7,48,239,234,6,8,34,3,0,0,1,0,0,0
+10,8,Fear Growth Rate,239,253,56,11,40,3,0,0,-1,0,0,0
+12,9,48,529,236,10,8,0,3,0,0,-1,0,0,0
+1,10,12,9,4,0,0,22,0,0,0,-1--1--1,,1|(491,236)|
+1,11,12,1,100,0,0,22,0,0,0,-1--1--1,,1|(420,236)|
+11,12,48,456,236,6,8,34,3,0,0,1,0,0,0
+10,13,Fear Reduction Rate,456,255,55,11,40,3,0,0,-1,0,0,0
+12,14,48,483,235,10,8,0,3,0,0,-1,0,0,0
+1,15,17,2,4,0,0,22,0,0,0,-1--1--1,,1|(590,235)|
+1,16,17,14,100,0,0,22,0,0,0,-1--1--1,,1|(521,235)|
+11,17,48,555,235,6,8,34,3,0,0,1,0,0,0
+10,18,Love Growth Rate,555,254,56,11,40,3,0,0,-1,0,0,0
+12,19,48,844,235,10,8,0,3,0,0,-1,0,0,0
+1,20,22,19,4,0,0,22,0,0,0,-1--1--1,,1|(806,235)|
+1,21,22,2,100,0,0,22,0,0,0,-1--1--1,,1|(735,235)|
+11,22,48,771,235,6,8,34,3,0,0,1,0,0,0
+10,23,Love Reduction Rate,771,254,55,11,40,3,0,0,-1,0,0,0
+12,24,48,326,426,10,8,0,3,0,0,-1,0,0,0
