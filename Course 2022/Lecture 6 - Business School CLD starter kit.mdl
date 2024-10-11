@@ -1,0 +1,159 @@
+{UTF-8}
+actual number of teachers  = A FUNCTION OF( net hiring rate)
+	~	
+	~		|
+
+continuation percentage  = A FUNCTION OF( work pressure)
+	~	
+	~		|
+
+costs  = A FUNCTION OF( actual number of teachers)
+	~	
+	~		|
+
+desired number of teachers  = A FUNCTION OF( total number of students)
+	~	
+	~		|
+
+graduation percentage  = A FUNCTION OF( work pressure)
+	~	
+	~		|
+
+graduation rate  = A FUNCTION OF( graduation percentage,students in 2nd year)
+	~	
+	~		|
+
+net hiring rate  = A FUNCTION OF( actual number of teachers,desired number of teachers\
+		)
+	~	
+	~		|
+
+profit  = A FUNCTION OF( costs,revenues)
+	~	
+	~		|
+
+revenues  = A FUNCTION OF( graduation rate)
+	~	
+	~		|
+
+work pressure  = A FUNCTION OF( actual number of teachers,desired number of teachers)
+	~	
+	~		|
+
+students in 2nd year  = A FUNCTION OF( continuation percentage,students in 1st year)
+	~	
+	~		|
+
+total number of students  = A FUNCTION OF( students in 1st year,students in 2nd year)
+	~	
+	~		|
+
+students in 1st year  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 2028
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 2018
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.0078125
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Arial|10||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+10,1,students in 1st year,146,130,60,9,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,2,students in 2nd year,441,122,47,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,3,continuation percentage,438,216,37,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,4,graduation rate,825,225,45,9,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,5,graduation percentage,650,268,34,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,6,total number of students,104,290,46,16,8,3,0,8,0,0,0,0,-1--1--1,-1--1--1,|16||0-0-0,0,0,0,0,0,0
+10,7,desired number of teachers,211,472,63,24,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,8,actual number of teachers,759,389,51,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,9,net hiring rate,584,541,42,9,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,10,work pressure,462,369,43,9,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,11,revenues,965,256,28,9,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,12,costs,915,450,18,9,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+10,13,profit,1199,294,16,9,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|16||0-0-0,0,0,0,0,0,0
+1,14,1,6,1,0,43,0,0,192,0,-1--1--1,,1|(80,181)|
+1,15,6,7,1,0,43,0,0,192,0,-1--1--1,,1|(101,416)|
+1,16,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(288,82)|
+1,17,2,6,1,0,43,0,0,192,0,-1--1--1,,1|(241,169)|
+1,18,7,9,1,0,43,0,0,192,0,-1--1--1,,1|(384,600)|
+1,19,8,9,1,0,45,0,0,192,0,-1--1--1,,1|(722,507)|
+1,20,9,8,1,0,43,0,0,192,0,-1--1--1,,1|(622,395)|
+12,21,0,674,449,28,28,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+B|<<NnN>>|Hiring / Firing Loop
+1,22,7,10,1,0,43,0,0,192,0,-1--1--1,,1|(326,399)|
+1,23,8,10,1,0,43,0,0,192,0,-1--1--1,,1|(669,355)|
+1,24,10,3,1,0,45,0,0,192,0,-1--1--1,,1|(466,309)|
+1,25,10,5,1,0,45,0,0,192,0,-1--1--1,,1|(559,282)|
+1,26,3,2,1,0,45,0,0,192,0,-1--1--1,,1|(493,173)|
+12,27,0,314,287,80,80,5,7,0,0,-1,0,0,0,0,0,0,0,0,0
+B|<<NnN>>|Work pressure loop
+1,28,2,4,1,0,45,0,0,192,0,-1--1--1,,1|(747,108)|
+1,29,5,4,1,0,43,0,0,192,0,-1--1--1,,1|(748,288)|
+1,30,12,13,1,0,45,0,0,192,0,-1--1--1,,1|(1110,447)|
+1,31,11,13,1,0,43,0,0,192,0,-1--1--1,,1|(1072,217)|
+1,32,8,12,1,0,43,0,0,192,0,-1--1--1,,1|(864,390)|
+1,33,4,11,1,0,43,0,0,192,0,-1--1--1,,1|(914,205)|
+///---\\\
+:L<%^E!@
+4:Time
+5:revenues
+19:100,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:0
+41:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Courier|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1
