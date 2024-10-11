@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://www.vensim.com" target="_blank">
-    <img src="./Vensim_Logo.png" alt="Vensim Ventana Systems" width="150" height="150"/>
+    <img src="./Vensim_Logo.png" alt="Vensim Ventana Systems" width="300" height="300"/>
 </a>
 
 
