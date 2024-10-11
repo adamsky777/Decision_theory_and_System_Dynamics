@@ -1,0 +1,349 @@
+{UTF-8}
+drop out rate 2nd year=
+	(1-graduation percentage)*Students in 2nd year/average time to pass courses in the 2nd year
+	~	students/Year
+	~		|
+
+graduation rate=
+	graduation percentage*Students in 2nd year/average time to pass courses in the 2nd year
+	~	students/Year
+	~		|
+
+average time to pass courses in the 2nd year=
+	1+RAMP(0.2,2022,2025)
+	~	Year
+	~		|
+
+extra revenues after milestone=
+	10000
+	~	NOK/students
+	~		|
+
+revenues per graduated student=
+	75000+milestone*extra revenues after milestone
+	~	NOK/students
+	~		|
+
+continuation rate=
+	Students in 1st year*continuation percentage/average time to pass courses in the 1st year
+	~	students/Year
+	~	DELAY FIXED(entry rate*continuation percentage,1,1500)
+	|
+
+milestone=
+	IF THEN ELSE(Total number of graduates>=10000,1,0)
+	~	dmnl
+	~		|
+
+drop out rate 1st year=
+	Students in 1st year*(1-continuation percentage)/average time to pass courses in the 1st year
+	~	students/Year
+	~	DELAY FIXED(entry rate*(1-continuation percentage),1,1500)
+	|
+
+average time to pass courses in the 1st year=
+	1.5
+	~	Year
+	~		|
+
+Total number of graduates= INTEG (
+	graduation rate,
+		0)
+	~	students
+	~		|
+
+Accumulated Costs= INTEG (
+	costs per year,
+		0)
+	~	NOK
+	~		|
+
+accumulated profit=
+	Accumulated Revenues-Accumulated Costs
+	~	NOK
+	~		|
+
+Accumulated Revenues= INTEG (
+	revenues per year,
+		0)
+	~	NOK
+	~		|
+
+Actual number of teachers= INTEG (
+	net hiring rate,
+		90)
+	~	teachers
+	~		|
+
+annual costs per teacher=
+	900000
+	~	NOK/teachers/Year
+	~		|
+
+continuation percentage=
+	normal continuation percentage/work pressure
+	~	dimensionless
+	~		|
+
+costs per year=
+	Actual number of teachers*annual costs per teacher
+	~	NOK/Year
+	~		|
+
+desired number of teachers=
+	total number of students*required teaching capacity per student
+	~	teachers
+	~		|
+
+entry rate=
+	2000+STEP(400,2020)-STEP(600,2022)
+	~	students/Year
+	~	+STEP(400,2020)-STEP(600,2022)
+	|
+
+extra hiring=
+	0
+	~	teachers
+	~		|
+
+graduation percentage=
+	normal graduation percentage/work pressure
+	~	dimensionless
+	~		|
+
+hiring or firing time=
+	2
+	~	Year
+	~		|
+
+net hiring rate=
+	(desired number of teachers-Actual number of teachers+extra hiring)/hiring or firing time
+	~	teachers/Year
+	~		|
+
+normal continuation percentage=
+	0.75
+	~	dimensionless
+	~		|
+
+normal graduation percentage=
+	0.8
+	~	dimensionless
+	~		|
+
+profit per year=
+	revenues per year-costs per year
+	~	NOK/Year
+	~		|
+
+required teaching capacity per student=
+	0.02
+	~	teachers/students
+	~		|
+
+revenues per year=
+	graduation rate*revenues per graduated student
+	~	NOK/Year
+	~		|
+
+Students in 1st year= INTEG (
+	entry rate-continuation rate-drop out rate 1st year,
+		3000)
+	~	students
+	~		|
+
+Students in 2nd year= INTEG (
+	continuation rate-drop out rate 2nd year-graduation rate,
+		1500)
+	~	students
+	~		|
+
+total number of students=
+	Students in 1st year+Students in 2nd year
+	~	students
+	~		|
+
+work pressure=
+	desired number of teachers/Actual number of teachers
+	~	dimensionless
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 2028
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 2018
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.0078125
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Arial|10||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+10,1,Students in 1st year,379,77,40,20,3,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,2,Students in 2nd year,647,71,40,20,3,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,3,Actual number of teachers,511,378,64,22,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,4,6,2,4,0,0,22,0,0,0,-1--1--1,,1|(563,74)|
+1,5,6,1,100,0,0,22,0,0,0,-1--1--1,,1|(463,74)|
+11,6,0,513,74,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,continuation rate,513,91,50,9,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,8,48,165,73,0,0,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,9,11,1,4,0,0,22,0,0,0,-1--1--1,,1|(298,73)|
+1,10,11,8,100,0,0,22,0,0,0,-1--1--1,,1|(165,73)|
+11,11,0,252,73,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,entry rate,252,90,30,9,40,3,0,42,-1,0,0,0,-1--1--1,0-0-0,Arial|10||255-128-0,0,0,0,0,0,0
+12,13,48,378,198,0,0,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,14,16,13,4,0,0,22,0,0,0,-1--1--1,,1|(378,147)|
+1,15,16,1,100,0,0,22,0,0,0,-1--1--1,,1|(378,119)|
+11,16,0,378,147,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,17,drop out rate 1st year,425,147,39,16,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,18,48,647,204,0,0,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,19,21,18,4,0,0,22,0,0,0,-1--1--1,,1|(647,147)|
+1,20,21,2,100,0,0,22,0,0,0,-1--1--1,,1|(647,116)|
+11,21,0,647,147,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,22,drop out rate 2nd year,694,147,39,16,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,23,25,91,4,0,0,22,0,0,0,-1--1--1,,1|(840,70)|
+1,24,25,2,100,0,0,22,0,0,0,-1--1--1,,1|(739,70)|
+11,25,0,798,70,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,26,graduation rate,798,87,45,9,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,27,48,281,378,0,0,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,28,30,3,4,0,0,22,0,0,0,-1--1--1,,1|(408,378)|
+1,29,30,27,100,0,0,22,0,0,0,-1--1--1,,1|(281,378)|
+11,30,0,364,378,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,31,net hiring rate,364,395,42,9,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,32,total number of students,170,235,46,16,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,33,desired number of teachers,206,318,55,16,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,34,1,32,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,35,2,32,1,0,0,0,0,64,0,-1--1--1,,1|(223,78)|
+1,36,32,33,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,37,33,30,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,38,work pressure,439,284,43,9,8,3,0,42,0,0,0,0,-1--1--1,0-0-0,Arial|10||255-128-0,0,0,0,0,0,0
+1,39,33,38,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,40,3,38,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,41,continuation percentage,435,222,37,16,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,42,graduation percentage,750,244,34,16,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,43,38,41,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,44,38,42,1,0,0,0,0,64,0,-1--1--1,,1|(610,318)|
+1,45,41,7,1,0,0,0,0,64,0,-1--1--1,,1|(545,204)|
+1,46,41,17,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,47,42,26,1,0,0,0,0,64,0,-1--1--1,,1|(814,193)|
+1,48,42,22,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,49,2,25,1,0,0,0,0,64,0,-1--1--1,,1|(698,15)|
+1,50,2,22,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,51,required teaching capacity per student,83,402,62,16,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,52,51,33,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,53,hiring or firing time,283,453,55,9,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,54,3,31,1,0,0,0,0,64,0,-1--1--1,,1|(464,427)|
+1,55,53,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,56,normal graduation percentage,835,306,55,16,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,57,normal continuation percentage,574,292,60,16,8,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,58,57,41,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,59,56,42,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,60,Accumulated Revenues,1089,265,54,19,3,131,0,40,0,0,0,0,-1--1--1,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,61,Accumulated Costs,1095,429,53,20,3,131,0,40,0,0,0,0,-1--1--1,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,62,48,901,270,0,0,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,63,65,60,4,0,0,22,0,0,0,-1--1--1,,1|(1004,270)|
+1,64,65,62,100,0,0,22,0,0,0,-1--1--1,,1|(901,270)|
+11,65,0,968,270,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,66,revenues per year,968,287,53,9,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,67,48,911,428,0,0,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,68,70,61,4,0,0,22,0,0,0,-1--1--1,,1|(1012,428)|
+1,69,70,67,100,0,0,22,0,0,0,-1--1--1,,1|(911,428)|
+11,70,0,976,428,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,71,costs per year,976,445,44,9,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,72,26,65,1,0,0,0,0,64,0,-1--1--1,,1|(902,166)|
+10,73,revenues per graduated student,1013,162,55,16,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,74,73,65,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,75,3,71,1,0,0,0,0,64,0,-1--1--1,,1|(611,444)|
+10,76,annual costs per teacher,762,393,51,16,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,77,76,70,1,0,0,0,0,64,0,-1--1--1,,1|(913,377)|
+10,78,profit per year,1001,355,42,9,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,79,accumulated profit,1131,351,55,9,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,80,66,78,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,81,70,78,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,82,60,79,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,83,61,79,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,84,extra hiring,524,453,34,9,8,3,0,42,0,0,0,0,-1--1--1,0-0-0,Arial|10||255-128-0,0,0,0,0,0,0
+1,85,84,31,1,0,0,0,0,64,0,-1--1--1,,1|(388,450)|
+1,86,1,6,1,0,0,0,0,64,0,-1--1--1,,1|(440,41)|
+1,87,1,17,1,0,0,0,0,64,0,-1--1--1,,1|(440,112)|
+10,88,average time to pass courses in the 1st year,590,230,70,16,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,89,88,7,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,90,88,17,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,91,Total number of graduates,917,73,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,92,milestone,1099,68,30,9,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,93,91,92,1,0,0,0,0,64,0,-1--1--1,,1|(982,47)|
+1,94,92,73,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,95,average time to pass courses in the 2nd year,850,186,72,16,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,96,95,26,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,97,95,22,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,98,extra revenues after milestone,1145,150,45,16,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,99,98,73,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+///---\\\
+:GRAPH showing_delay
+:TITLE showing delay
+:SCALE
+:VAR entry rate
+:Y-MIN 1200
+:Y-MAX 2800
+:VAR continuation rate
+:VAR graduation rate
+:L<%^E!@
+1:delay in 2nd year with work pressure effect.vdfx
+4:Time
+5:work pressure
+9:delay in 2nd year with work pressure effect
+19:100,0
+24:2018
+25:2028
+26:2028
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:0
+41:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Courier|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

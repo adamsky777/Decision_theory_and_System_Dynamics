@@ -1,0 +1,96 @@
+{UTF-8}
+Bike lanes built  = A FUNCTION OF( Number of Road accidents)
+	~	
+	~		|
+
+Cycling more safe and Attractive  = A FUNCTION OF( Bike lanes built)
+	~	
+	~		|
+
+Number of Cyclists  = A FUNCTION OF( Cycling more safe and Attractive)
+	~	
+	~		|
+
+Number of Road accidents  = A FUNCTION OF( Bike lanes built,Number of Cyclists)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,0
+10,1,Number of Road accidents,371,246,51,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Bike lanes built,713,185,48,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Number of Cyclists,655,730,59,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,1,2,1,0,43,0,0,192,0,-1--1--1,,1|(517,111)|
+1,5,3,1,1,0,43,0,0,192,0,-1--1--1,,1|(341,471)|
+12,6,0,724,523,55,55,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R
+1,7,2,1,1,0,45,0,0,192,0,-1--1--1,,1|(622,354)|
+10,8,Cycling more safe and Attractive,1021,328,56,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,2,8,1,0,0,0,0,192,0,-1--1--1,,1|(866,169)|
+1,10,8,3,1,0,43,0,0,192,0,-1--1--1,,1|(922,672)|
+12,11,0,548,235,43,43,5,7,0,0,-1,0,0,0,0,0,0,0,0,0
+B
+12,12,0,585,369,80,40,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Comment
+12,13,0,710,278,80,40,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Comment
+///---\\\
+:L<%^E!@
+5:Number of Cyclists
+19:100,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Lucida Grande|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1
