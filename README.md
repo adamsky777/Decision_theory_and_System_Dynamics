@@ -5,8 +5,8 @@
 </a>
 
 
-# `Decision Theory & System Dynamics Master's Course`
-### `(2022 Fall)`
+# `Decision Theory & System Dynamics Master's Course` 
+## `(2022 Fall)`
 
 ![Static Badge](https://img.shields.io/badge/mission-Optimize_Decision--Making_Processes-purple)
 <br />
